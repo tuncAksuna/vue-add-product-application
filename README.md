@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+- An image from application
+
+ ![image](https://user-images.githubusercontent.com/65118839/148100763-34749be7-19b2-44dc-87b7-9a735be90ea1.png)
+
 ## Build Setup
 
 ``` bash
