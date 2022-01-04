@@ -90,7 +90,6 @@ export default {
     },
     addProduct(){
       this.product.totalPrice = this.product.count * this.product.price;
-      console.log(this.product)
     }
   },
 };
