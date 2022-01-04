@@ -1,18 +1,20 @@
 <template>
   <div class="row product-container">
-    <app-product :for="product in productList">
+    <app-product v-for="product in productList">
       <img
         class="card-img-top"
-        src="/src/assets/default.png"
-        alt="Card image cap"
+        :src="product.selectedImage"
+        :alt="product.title"
       />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <small> <strong>Number : </strong> 1 </small>
+        <h5 class="card-title">{{ product.title }}</h5>
+        <hr>
+        <small> <strong>Count : </strong> {{ product.count }} </small>
         <br />
-        <small> <strong>Cost : </strong> 10 </small>
-        <br />
-        <small> <strong>Price : </strong> 10 </small>
+        <small> <strong>Price : </strong> {{ product.price }} </small>
+        <br>
+        <hr>
+        <small> <strong>Total price : </strong> {{ product.totalPrice }} </small>
       </div>
     </app-product>
   </div>
@@ -20,7 +22,7 @@
 
 <script>
 import Product from "./Product.vue";
-
+import { eventBus } from "../main";
 export default {
   components: {
     appProduct: Product,
@@ -29,6 +31,11 @@ export default {
     return {
       productList: [],
     };
+  },
+  created() {
+    eventBus.$on("productAdded", (product) => {
+      this.productList.push(product);
+    });
   },
 };
 </script>
